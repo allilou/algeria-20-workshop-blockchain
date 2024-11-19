@@ -2,7 +2,6 @@
 services:
   # ganachecli: simulated test rpc on dev environment
   ganache-cli:
-    container_name: ganache-cli
     build:
       context: ./docker/ganache
     ports:
@@ -12,8 +11,7 @@ services:
 
   # truffle-suite
   # volumes are used here to enable hot editing :) Nice trick!
-  backend:
-    container_name: backend
+  web:
     build:
       context: ./docker/dev
     healthcheck:
@@ -21,12 +19,12 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-    # command: "cd backend && yarn install"
+    # command: "cd web && yarn install"
     tty: true
     ports:
       - 5000:5000
-    # volumes:
-    #   - "./backend:/backend"
+    volumes:
+      - "./:/home/workspace"
     networks:
       - test_network
     links:
