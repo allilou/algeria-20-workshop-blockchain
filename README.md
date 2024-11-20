@@ -11,7 +11,7 @@ Workshop on blockchain for Algeria 2.0  2024 Edition
 Install hardhat
 ```bash
 npm install --save-dev hardhat
-npmx hardhat
+npx hardhat
 ```
 
 Create the sample project
